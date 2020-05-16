@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        link(rel="stylesheet", href="/public/css/style.css")
+        title NFT MARKER CREATOR
+    body
+        .container
+            p(id="title" href="#confidenceLevel") NFT MARKER CREATOR
+            input#imageLoader(type="file" name="imageLoader" style="display: none;")
+            button#uploadBt.bt(onclick="document.getElementById('imageLoader').click();") Cargar Imagen
+            button#generateBt.bt(onclick="generate()" disabled) Generar Descriptores
+            a#enlace(href="/server/addmarker" style="display: none;") Ir a Agregar Marcador 
+
+            #wrapper
+                canvas#imageCanvas
+                .spinner-container
+                    .spinner
+                .checkmark-cover
+                    .tasks-list-mark
+
+            canvas#hideCanvas
+
+            .confidence.grid-template-columns#confidenceLevel
+                p(style="font-size: 50px; margin-bottom: 0") Confianza:
+                img.confidenceEl(src="/public/icons/star2.svg")
+                img.confidenceEl(src="/public/icons/star2.svg")
+                img.confidenceEl(src="/public/icons/star2.svg")
+                img.confidenceEl(src="/public/icons/star2.svg")
+                img.confidenceEl(src="/public/icons/star2.svg")
+
+        #modal
+            #modalBody
+                p#modalTitle No "número de canales" encontrados
+                p#modalTxt 
+                    | Informa el número de canales (NC):
+                    br
+                    | (Imágenes a blanco y negro tiene NC=1. Imágenes a color tiene NC=3) 
+
+                input#modalInput(type='number', value='3')
+                button#cancelBt.bt.modBt(onclick='closeModal()') Cancel
+                button#confirmBt.bt.modBt(onclick='setValueFromModal()') Confirm
+
+        script(src="/public/assets/exif.js")
+        script(type='text/javascript').
+            var artoolkit_wasm_url = '/public/assets/wasm/NftMarkerCreator_wasm.wasm';
+        script(async='', type='text/javascript', src='/public/assets/wasm/NftMarkerCreator_wasm.js')
+        script(src="/public/assets/index.js")

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css")
+        link(rel="stylesheet", href="/public/css/app.css")
+        title Document
+    body
+        div(class="col-md-6 remove-float mx-auto big-top-space")
+            h1 Subir nueva imagen
+            form(action="/server/images" method="POST" enctype="multipart/form-data")
+                div(class="form-group")
+                    label(for="image") Imagen
+                    input(type="file" name="image" id="image" class="form-control")
+                div
+                    label(for="descriptors") Descriptores de Imagen
+                    input(type="file" name="descriptors" id="descriptors" class="form-control" multiple="")
+                div(class="row top-space")
+                    div(class="col-xs-12 col-sm-6")
+                        input(type="button" value="Fetch API" class="btn btn-info" onclick="postFetch()")
+                div(class="row top-space")
+                    div(class="col-xs-12 col-sm-6")
+                        input(type="submit" value="Guardar Archivos" class="btn btn-info")
+
+        script(src="/public/assets/test.js")
